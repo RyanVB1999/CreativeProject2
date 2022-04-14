@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title> </title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+    #map {
+      height: 500px;
+      width: 100%;
+}
+  </style>
+</head>
+<body>
+
+<div id="map">
+
+  </div>
+
+  <form>
+    <input type="number" id="latInput">
+    <p> Latitude </p>
+    <input type="number" id="lonInput">
+    <p> Longitude </p>
+    <input type="number" id="zoomInput">
+    <p> Zoom </p>
+    <button type = "button" onclick="goToLocation()" name = "Submit">Go To Location</button>
+    <button type = "button" onclick="addMarker()" name = "Submit">Add a Marker</button>
+  </form>
+
+
+  <script>
+
+  let map;
+
+function goToLocation() {
+  let latValue = document.getElementById("latInput").value;
+  let lonValue = document.getElementById("lonInput").value;
+  let zoomInput = document.getElementById("zoomInput").value;
+  initMapWithCoords(Number(latValue), Number(lonValue), Number(zoomInput));
+}
+
+function initMapWithCoords(latValue, lonValue, zoomValue) {
+  var location = {lat: latValue, lng: lonValue};
+  map.setCenter(location);
+  map.setZoom(zoomValue);
+}
+    //the specific input
+// var inputID = document.getElementById('inputID');
+//
+// //add a listener to the object for blur
+// inputID.addEventListener('blur',function(){
+//     //the value attribute is the way to get what the user entered.
+//     console.log(inputID.value);
+// });
+    function initMap() {
+      var location = {lat: -25.363, lng: 131.044};
+      map = new google.maps.Map(document.getElementById("map"),{
+        zoom: 4,
+      });
+      map.setCenter(location);
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO4S3VGyzMyUgiISq3_Ti1p6BpGZaLAiA&callback=initMap">
+      </script>
+
+  </body>
+
+  </html>
